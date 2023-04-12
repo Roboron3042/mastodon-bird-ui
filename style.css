@@ -1231,14 +1231,14 @@ body.embed .detailed-status__favorites {
 body.embed .detailed-status__reblogs::after,
 .layout-single-column .detailed-status__reblogs::after {
   color: var(--color-dim);
-  content: 'Boosts';
+  content: 'Impulsos';
   font-weight: 500;
 }
 
 body.embed .detailed-status__favorites::after,
 .layout-single-column .detailed-status__favorites::after {
   color: var(--color-dim);
-  content: 'Favourites';
+  content: 'Favoritos';
   font-weight: 500;
 }
 
