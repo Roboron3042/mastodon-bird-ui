@@ -2151,22 +2151,6 @@ body.embed .button.logo-button:hover,
   transition: all 200ms;
 }
 
-/* Compose form */
-.layout-single-column .compose-panel .compose-form {
-  position: relative;
-  z-index: 100;
-}
-
-.layout-single-column .compose-panel .compose-form,
-.layout-single-column .compose-panel,
-.layout-single-column .compose-form__autosuggest-wrapper {
-  overflow: visible;
-}
-
-.layout-single-column .compose-form {
-  background-color: var(--color-bg);
-}
-
 /* Compose form and reply indicator box, see https://mastodo.fi/@rmattila74/110140863513856240 */
 @media (min-width: 889px) {
   .layout-single-column .compose-form .autosuggest-textarea__textarea {
