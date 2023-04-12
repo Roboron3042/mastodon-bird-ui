@@ -1835,18 +1835,23 @@ body.embed .detailed-status__meta .detailed-status__link .fa-retweet,
 .layout-single-column .account__header__bio .account__header__fields {
   background-color: transparent;
   color: var(--color-dim);
+  gap: calc(var(--gap-default) / 2);
   display: flex;
   flex-wrap: wrap;
-  gap: var(--gap-default);
-  padding: 0;
 }
 
-/* Hide label */
-.layout-single-column .account__header__bio .account__header__fields dt {
-  display: none;
+.layout-single-column .account__header__bio .account__header__fields dl:not(:first-child) {
+  display:flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-basis: 0%;
 }
 
 /* Joined label */
+.layout-single-column .account__header__bio .account__header__fields dl:first-child {
+  flex: 0 0 100%;
+  margin-bottom: 0.5rem;
+}
 .layout-single-column .account__header__bio .account__header__fields dt:not([title]) {
   display: inline-flex;
   font-weight: 400;
