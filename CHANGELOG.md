@@ -1,3 +1,32 @@
+### 1.5.2: 2023-04-28
+
+* Hot fix the bookmark hover icon
+
+### 1.5.1: 2023-04-28
+
+* Fix server information links not visible after logging in, Fixes #22 (thanks @fofwisdom!)
+* Fix follow_requests order #24 #23 (thanks @tribela!)
+
+### 1.5.0: 2023-04-26
+
+* Fix regression with the threaded border color
+
+### 1.4.9: 2023-04-26
+
+* Fix content warning alignment, should be baseline instead of top
+* Add gap between the cw title and show-button
+* Increase contrast of show button
+* Fix cw button color in notifications
+* Fix hover size of the bookmark icon when in detailed status
+* Fix detailed status bar bookmark icon color on hover
+* Add account header handle to color light purple scope
+* Fix follow button color being different than the rest
+
+### 1.4.8: 2023-04-22
+
+* Fix admin sign up notification glitch, Fixes #19 (thanks @llamacucumber!)
+* Change some leftover shaded colors to more Mastodon deep purple variant rather than Twitter blue
+
 ### 1.4.7: 2023-04-09
 
 * Fix the sparkle and circle position on Explore tab on mobile
