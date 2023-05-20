@@ -1,5 +1,5 @@
 /* Mastodon Bird UI by @rolle@mementomori.social
-   1.5.2 */
+   1.5.7rc2 */
 
 /* CSS variables */
 :root {
@@ -688,6 +688,11 @@ body.embed .status__content a,
 .layout-single-column .column-link--transparent.active,
 .layout-single-column .status__content__read-more-button {
   color: var(--color-accent);
+}
+
+/* Toggles */
+.layout-single-column .react-toggle .react-toggle-track {
+  background-color: var(--color-bg);
 }
 
 /* Accented background colors */
@@ -1397,6 +1402,13 @@ body.embed .detailed-status__meta .detailed-status__link .fa-retweet,
   overflow: visible;
 }
 
+/* Fixes: User avatars in notifications are sometimes links to my profile instead of theirs #25 */
+.layout-single-column .notification.notification-reblog .status__info .status__display-name,
+.layout-single-column .notification.notification-follow .status__info .status__display-name,
+.layout-single-column .notification.notification-favourite .status__info .status__display-name {
+  pointer-events: none;
+}
+
 /* Hack to show follow notification more minimal way */
 .layout-single-column .notification.notification-admin-report .notification__report,
 .layout-single-column .notification.notification-admin-sign-up .account__wrapper,
@@ -1856,7 +1868,7 @@ body.embed .detailed-status__meta .detailed-status__link .fa-retweet,
 
 /* Profile */
 .layout-single-column .getting-started__trends h4,
-.layout-single-column .layout-single-column .account__header__bar {
+.layout-single-column .account__header__bar {
   border-color: var(--color-border);
 }
 
@@ -2085,7 +2097,7 @@ body.embed .button.logo-button:hover,
 }
 
 .layout-single-column .status__action-bar .icon-button.icon-button--with-counter::after {
-  transform: translateX(-6px) translateY(2px);
+  transform: translateX(-6px) translateY(-1px);
 }
 
 /* Misc UI fixes */
@@ -3215,7 +3227,7 @@ body.embed .entry .detailed-status {
 .layout-single-column .autosuggest-textarea__textarea::-webkit-scrollbar-thumb:active,
 .layout-single-column .reply-indicator::-webkit-scrollbar-thumb:active,
 .layout-single-column::-webkit-scrollbar-thumb:active {
-  background-color: var(--color-bg);
+  background-color: var(--color-black-coral);
 }
 
 .layout-single-column textarea::-webkit-scrollbar-track,
