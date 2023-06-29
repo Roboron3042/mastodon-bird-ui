@@ -14,14 +14,15 @@ Read the blog post: [The day I decided to build my own "Twitter"](https://rolle.
 1. [Why would anyone want Mastodon to look like Twitter?](#why-would-anyone-want-mastodon-to-look-like-twitter)
 2. [Features](#features)
 3. [Installation for Mastodon instance admins](#installation-for-mastodon-instance-admins)
-4. [Installation for regular users, contributing and testing](#installation-for-regular-users-contributing-and-testing)
-5. [Other tweaks and customizations](#other-tweaks-and-customizations)
+4. [Make Mastodon Bird UI as optional by integrating it as 'Site theme' in settings for all users](#make-mastodon-bird-ui-as-optional-by-integrating-it-as-site-theme-in-settings-for-all-users)
+5. [Installation for regular users, contributing and testing](#installation-for-regular-users-contributing-and-testing)
+6. [Other tweaks and customizations](#other-tweaks-and-customizations)
     1. [Twitter-like link previews](#twitter-like-link-previews)
     2. [Status bar color on Android PWA](#status-bar-color-on-android-pwa)
     3. [Hide translate link for multiple languages](#hide-translate-link-for-multiple-languages)
     4. [Thread lines](#thread-lines)
     5. [Micro-interactions](#micro-interactions)
-6. [FAQ](#faq)
+7. [FAQ](#faq)
     1. [I want to make changes to the UI, can I do that?](#i-want-to-make-changes-to-the-ui-can-i-do-that)
     2. [Can you implement feature X?](#can-you-implement-feature-x)
     3. [I want background-color to the compose form](#i-want-background-color-to-the-compose-form)
@@ -29,7 +30,7 @@ Read the blog post: [The day I decided to build my own "Twitter"](https://rolle.
     5. [Why don't you just run Mastodon Bird UI in a separate URL?](#why-dont-you-just-run-mastodon-bird-ui-in-a-separate-url)
     6. [Is the advanced web interface styled](#is-the-advanced-web-interface-styled)
     7. [Why the admin interface is not styled?](#why-the-admin-interface-is-not-styled)
-7. [Goals](#goals)
+8. [Goals](#goals)
 
 ## Why would anyone want Mastodon to look like Twitter?
 
@@ -82,6 +83,49 @@ As this is CSS-only, they are not really "features" but more like aesthetic chan
 1. Copy the contents of [layout-single-column.css](https://github.com/ronilaukkarinen/mastodon-bird-ui/blob/master/layout-single-column.css) and [layout-multiple-columns.css](https://github.com/ronilaukkarinen/mastodon-bird-ui/blob/master/layout-multiple-columns.css) and paste them (or one of them) to the **Custom CSS** in the Appearance settings in your instance (https://_yourinstance_/admin/settings/appearance). It might be recommended using the single layout CSS as "base" and use the advanced view CSS with browser extension (as it's desktop only anyway).
 
 ![Screen-Shot-2023-03-31-13-25-52](https://user-images.githubusercontent.com/1534150/229111630-c8975708-134b-4887-b259-a87857193387.png)
+
+## Make Mastodon Bird UI as optional by integrating it as 'Site theme' in settings for all users
+
+Mastodon Bird UI can be integrated as a **Site theme** for all instance users using [Bird UI Theme Admins](https://github.com/mstdn/Bird-UI-Theme-Admins) written by [STUX](https://mstdn.social/@stux).
+
+1. Add the files from the repo (elephant.scss) and the folder elephant to your Mastodon themes directory:
+
+```
+app/
+  javascript/
+    styles/
+    elephant.scss                             | **new**
+      contrast/
+        ...
+      fonts/
+        ...
+      elephant/                                   | **new**
+        layout-multiple-columns.scss                               | **new**
+        layout-single-column.scss                              | **new**
+```
+
+2. **Add your theme to the config.** This is what [the default themes.yml](https://github.com/tootsuite/mastodon/blob/master/config/themes.yml) looks like in Mastodon. To make your custom theme visible in settings, you need to add a new line in the form `themeName: path/to/theme.scss`. For example, the modern-dark theme would require adding `modern-dark: styles/modern-dark.scss` as a new line.
+
+```
+        default: styles/application.scss
+        contrast: styles/contrast.scss
+        mastodon-light: styles/mastodon-light.scss
+        elephant: styles/elephant.scss      | **new**
+```
+
+3. **Add a human-friendly name for the theme (optional).** You can edit each desired language's locale file in `config/locales/[lang].yml` to add a localized string name for your theme's `themeName` as added in the previous step. For example, [the default `config/locales/en.yml`](https://github.com/tootsuite/mastodon/blob/041ff5fa9a45f7b8d1048a05a35611622b6f5fdb/config/locales/en.yml#L942-L945) contains localizations for the three default themes that ship with Mastodon, into the `en`glish language. You need to do this for every language you expect your users to use, or else they will see the unlocalized `themeName` directly.
+
+```
+          themes:
+            contrast: Mastodon (High contrast)
+            default: Mastodon (Dark)
+            mastodon-light: Mastodon (Light)
+            elephant: Elephant              | **new**
+```
+
+4. **Compile theme assets and restart.** Run `RAILS_ENV=production bundle exec rails assets:precompile` and restart your Mastodon instance for the changes to take effect.
+
+![Example of integration](https://github.com/ultramookie/mastodon-bird-ui/assets/38467/1125dc9b-f3a2-431a-860f-d8219d8e0c5c)
 
 ## Installation for regular users, contributing and testing
 
