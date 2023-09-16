@@ -1,6 +1,6 @@
 ## Mastodon with modern birdsite-like UI
 
-[![Build Status for CSS](https://github.com/ronilaukkarinen/mastodon-bird-ui/actions/workflows/styles.yml/badge.svg)](https://github.com/ronilaukkarinen/mastodon-bird-ui/actions/workflows/styles.yml) [![Supported Mastodon version](https://img.shields.io/badge/mastodon-v4.1.2-595aff)](https://github.com/mastodon/mastodon)
+[![Build Status for CSS](https://github.com/ronilaukkarinen/mastodon-bird-ui/actions/workflows/styles.yml/badge.svg)](https://github.com/ronilaukkarinen/mastodon-bird-ui/actions/workflows/styles.yml) [![Supported Mastodon version](https://img.shields.io/badge/mastodon-v4.2.0beta3-595aff)](https://github.com/mastodon/mastodon) <a href="https://github.com/sponsors/ronilaukkarinen"><img src="https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white" height="20px"> <a href="https://www.buymeacoffee.com/Fd140aV"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-orange.png" height="20px"></a>
 
 Blasphemy! Yes, I know, but I just had to do this. I wanted to see if it's possible to get <a href="https://github.com/mastodon/mastodon">Mastodon</a> default user interface to resemble Twitter, but be a lot better than it ever was.
 
@@ -9,36 +9,54 @@ Blasphemy! Yes, I know, but I just had to do this. I wanted to see if it's possi
 **See my [original Mastodon post](https://mementomori.social/@rolle/109984108360395822).<br>
 Read the blog post: [The day I decided to build my own "Twitter"](https://rolle.design/the-day-i-decided-to-build-my-own-twitter).**
 
+## [Live demo on mementomori.social](https://mementomori.social)
+
+![mbui (3)](https://github.com/ronilaukkarinen/mastodon-bird-ui/assets/1534150/144cca29-2fcf-4d94-8a83-b3526dbdd420)
+
+## Versions
+
+Mastodon Bird UI uses the following version formatting: _semver + stability tag, for example: `1.5.8rc4-nightly`. First, check the Mastodon version you're running, then choose the version for Mastodon Bird UI. If you're running Mastodon **stable** (from tags), choose the version for it below. If you're running Mastodon nightly (from main branch), choose the version `Mastodon nightly (main branch)`.
+
+- [Mastodon 4.1.2, 4.1.3, 4.1.4, 4.1.5, 4.1.6, 4.1.7 stable versions](https://github.com/ronilaukkarinen/mastodon-bird-ui/tree/stable)
+- [Mastodon nightly (main branch)](https://github.com/ronilaukkarinen/mastodon-bird-ui/tree/main)
+
 ## Table of contents
 
 1. [Why would anyone want Mastodon to look like Twitter?](#why-would-anyone-want-mastodon-to-look-like-twitter)
 2. [Features](#features)
-3. [Installation for Mastodon instance admins](#installation-for-mastodon-instance-admins)
-4. [Make Mastodon Bird UI as optional by integrating it as 'Site theme' in settings for all users](#make-mastodon-bird-ui-as-optional-by-integrating-it-as-site-theme-in-settings-for-all-users)
-5. [Installation for regular users, contributing and testing](#installation-for-regular-users-contributing-and-testing)
-6. [Other tweaks and customizations](#other-tweaks-and-customizations)
+3. [List of instances that use Mastodon Bird UI](#list-of-instances-that-use-mastodon-bird-ui)
+4. [Installation for Mastodon instance admins](#installation-for-mastodon-instance-admins)
+5. [Make Mastodon Bird UI as optional by integrating it as 'Site theme' in settings for all users](#make-mastodon-bird-ui-as-optional-by-integrating-it-as-site-theme-in-settings-for-all-users)
+6. [Installation for regular users, contributing and testing](#installation-for-regular-users-contributing-and-testing)
+7. [Updating instructions](#updating-instructions)
+8. [Other tweaks and customizations](#other-tweaks-and-customizations)
     1. [Twitter-like link previews](#twitter-like-link-previews)
     2. [Status bar color on Android PWA](#status-bar-color-on-android-pwa)
     3. [Hide translate link for multiple languages](#hide-translate-link-for-multiple-languages)
     4. [Thread lines](#thread-lines)
     5. [Micro-interactions](#micro-interactions)
-7. [FAQ](#faq)
+9. [FAQ](#faq)
     1. [I want to make changes to the UI, can I do that?](#i-want-to-make-changes-to-the-ui-can-i-do-that)
     2. [Can you implement feature X?](#can-you-implement-feature-x)
-    3. [I want background-color to the compose form](#i-want-background-color-to-the-compose-form)
     4. [Why don't you just create an app?](#why-dont-you-just-create-an-app)
     5. [Why don't you just run Mastodon Bird UI in a separate URL?](#why-dont-you-just-run-mastodon-bird-ui-in-a-separate-url)
     6. [Is the advanced web interface styled](#is-the-advanced-web-interface-styled)
     7. [Why the admin interface is not styled?](#why-the-admin-interface-is-not-styled)
-8. [Goals](#goals)
+    8. [Can you add background-color for compose form box area?](#can-you-add-background-color-for-compose-form-box-area)
+    9. [Can you change compose form height and font-size?](#can-you-change-compose-form-height-and-font-size)
+    10. [Can you add feature x?](#can-you-add-feature-x)
+    11. [Can you make it look like this by default?](#can-you-make-it-look-like-this-by-default)
+    12. [How to get to settings or faves on mobile?](#how-to-get-to-settings-or-faves-on-mobile)
+    13. [Automatic dark/light mode possible?](#automatic-darklight-mode-possible)
+10. [Goals](#goals)
+11. [Accessibility](#accessibility)
+    1. [ How to install an Accessible version built for people with serious vision impairment](#how-to-install-an-accessible-version-built-for-people-with-serious-vision-impairment)
 
 ## Why would anyone want Mastodon to look like Twitter?
 
 Because you can? Let's face it, we're kinda used to it, Mastodon already resembles the birdsite. Twitter UI is not bad, it's just that it's not for everyone. Twitter (in my opinion) made some bad choices with the new UI for example with the typography, so in a sense I wanted to see if I could make Mastodon look **like Twitter, but better**.
 
 This is why I have defaulted Mastodon deep purple colors in this "theme", if you will. If you really want the vanilla birdsite-look, please modify the colors yourself. Or go to the hellsite if you really love it so much.
-
-## [Live demo on mementomori.social](https://mementomori.social)
 
 ![224368120-5f7bddc9-1702-4279-b297-35a4829e8a3b](https://user-images.githubusercontent.com/1534150/227730434-8a649484-d46c-4b5a-8137-930a302e54d8.png)
 
@@ -63,7 +81,6 @@ Here are some of the UI things Mastodon Bird UI is trying to solve (read [the Ma
 As this is CSS-only, they are not really "features" but more like aesthetic changes.
 
 - Respects the profile **Site theme** setting and sets dark/light based on this alone
-- Missing alt text indicators
 - Subtle deep purple ribbon in the right corner for private messages
 - CSS variables for everything
 - Threaded replies (limited, see issue [#4](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/4#issuecomment-1493274306))
@@ -77,6 +94,56 @@ As this is CSS-only, they are not really "features" but more like aesthetic chan
 - Support for RTL languages
 - Hide lists by default, show them on hover
 - Carefully polished UI with hand picked/designed icons based on open source versions of Iconoir, Ionicons and Feather
+- Show added follows in green, indicate unfollow with red
+- Show added to list in green, indicate removing with red
+
+## List of instances that use Mastodon Bird UI
+
+The following instances have enabled Mastodon Bird UI for their users, based on [this](https://mementomori.social/@rolle/110677863997761494) inquiry. Do you use this theme? Let me know or send a PR that adds your instance.
+
+| **Instance**                                                             | **Implementation method** | **Theme name**   | **User count** | **Default** |
+|--------------------------------------------------------------------------|---------------------------|------------------|----------------|-------------|
+| [mementomori.social](https://mementomori.social/explore)                 | Site theme                | Mastodon Bird UI | 100+           | Yes         |
+| [dvm.community](https://dmv.community/explore)                           | Custom CSS                | N/A              | 200+           | Yes         |
+| [muri.network](https://muri.network/explore)                             | Site theme                | Mastodon Bird UI | 100+           | Yes         |
+| [suomi.social](https://suomi.social/explore)                             | Custom CSS                | N/A              | 10+            | Yes         |
+| [mstdn.social](https://mstdn.social/explore)                             | Site theme                | Elephant         | 40000+         | No          |
+| [bolha.one](https://bolha.one/explore)                                   | Custom CSS                | N/A              | 10+            | Yes         |
+| [indieweb.social](https://indieweb.social/explore)                       | Custom CSS                | N/A              | 1900+          | Yes         |
+| [egirl.social](https://egirl.social/about)                               | Custom CSS                | N/A              | 1              | Yes         |
+| [qdon.space](https://qdon.space/about)                                   | Site theme                | Mastodon Bird UI | 1100+          | No          |
+| [bakedbean.xyz](https://bakedbean.xyz/explore)                           | Custom CSS                | N/A              | 100+           | Yes         |
+| [wien.rocks](https://wien.rocks/explore)                                 | Site theme                | BirdUI           | 1100+          | No          |
+| [climatejustice.global](https://climatejustice.global/explore)           | Site theme                | BirdUI           | 100+           | No          |
+| [climatejustice.social](https://climatejustice.social/explore)           | Site theme                | BirdUI           | 1800+          | No          |
+| [climatejustice.rocks](https://climatejustice.rocks/explore)             | Site theme                | BirdUI           | 1              | No          |
+| [fedi.at](https://fedi.at/explore)                                       | Site theme                | BirdUI           | 160+           | No          |
+| [mtg.garden](https://mtg.garden/explore)                                 | Site theme                | BirdUI           | 20+            | No          |
+| [social.fairphone.community](https://social.fairphone.community/explore) | Site theme                | BirdUI           | 5              | No          |
+| [kawakawa.fun](https://kawakawa.fun/explore)                             | Custom CSS                | N/A              | 1              | Yes         |
+| [mastodonsuomi.fi](https://mastodonsuomi.fi/explore)                     | Custom CSS                | N/A              | 20+            | Yes         |
+| [mastodon.ktachibana.party](https://mastodon.ktachibana.party/explore)   | Site theme                | Bird UI          | 100+           | No          |
+| [techhub.social](https://techhub.social/explore)                         | Site theme                | Elephant         | 14000+         | No          |
+| [social.noleron.com](https://social.noleron.com/explore)                 | Site theme                | Elephant         | 10+            | Yes         |
+| [masto.es](https://masto.es/explore)                                     | Site theme                | Bird UI          | 5400+          | Yes         |
+| [mast.lat](https://mast.lat/explore)                                     | Modified Custom CSS       | N/A              | 1900+          | Yes         |
+| [tkz.one](https://tkz.one/explore)                                       | Modified Custom CSS       | N/A              | 3500+          | Yes         |
+| [mastodonsweden.se](https://mastodonsweden.se/explore)                   | Custom CSS                | N/A              | 130+           | Yes         |
+| [mindly.social](https://mindly.social/explore)                           | Site theme                | Elephant         | 4800+          | No          |
+| [vmst.io](https://vmst.io/explore)                                       | Site theme                | Bird UI          | 650+           | No          |
+| [some.tehy.fi](https://some.tehy.fi/explore)                             | Custom CSS                | N/A              | 3              | Yes         |
+| [pug.ninja](https://pug.ninja/explore)                                   | Custom CSS                | N/A              | 1              | Yes         |
+| [aus.social](https://aus.social/explore)                                 | Site theme                | Elephant         | 5700+          | No          |
+| [tyrol.social](https://tyrol.social/explore)                             | Site theme                | BirdUI           | 40+            | No          |
+| [social.ferrocarril.net](https://social.ferrocarril.net/explore)         | Custom CSS                | N/A              | 20+            | Yes         |
+| [social.braydmedia.de](https://social.braydmedia.de/explore)             | Custom CSS                | N/A              | 1              | Yes         |
+| [mastodon.sg](https://mastodon.sg)                                       | Custom CSS                | N/A              | 100+           | Yes         |
+| [krassestegang.social](https://krassestegang.social/explore)             | Site theme                | Elephant         | 3              | Yes         |
+| [artsculture.media](https://artsculture.media/explore)                   | Site theme                | Mastodon Bird UI | 60+            | No          |
+| [furry.energy](https://furry.energy/explore)                             | Site theme                | Elephant         | 90+            | Yes         |
+| [vkl.world](https://vkl.world/explore)                                   | Modified Custom CSS       | N/A              | 2000+          | Yes         |
+| [duk.space](https://duk.space/explore)                                   | Site theme                | Bird UI          | 80+            | No          |
+| [supebase.com](https://supebase.com)                                     | Site theme                | Bird UI Modified | 1              | Yes         |
 
 ## Installation for Mastodon instance admins
 
@@ -86,46 +153,91 @@ As this is CSS-only, they are not really "features" but more like aesthetic chan
 
 ## Make Mastodon Bird UI as optional by integrating it as 'Site theme' in settings for all users
 
-Mastodon Bird UI can be integrated as a **Site theme** for all instance users using [Bird UI Theme Admins](https://github.com/mstdn/Bird-UI-Theme-Admins) written by [STUX](https://mstdn.social/@stux).
+Mastodon Bird UI can be integrated as a **Site theme** for all instance users as optional.
 
-1. Add the files from the repo (elephant.scss) and the folder elephant to your Mastodon themes directory:
+**Please note**: These include modifications to the Mastodon core so do it only at your own risk! I highly recommend you to make the modifications in local development envinronment, push them to your fork, then git pull that fork to live after confirmed working.
 
+![image](https://github.com/ronilaukkarinen/mastodon-bird-ui/assets/1534150/b30f19e2-2835-4d92-b40d-cac9922f64b3)
+
+If you'd like a different branding for your instance like "Elephant" without any [mention of birds](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/30), use [Bird UI Theme Admins](https://github.com/mstdn/Bird-UI-Theme-Admins) by [@stux](https://mstdn.social/@stux). If you want Mastodon Bird UI to be as default, read along.
+
+If you cd to your Mastodon directory (usually $HOME/live) you can run these bash commands (**Please note:** These add Mastodon Bird UI as name "Mastodon Bird UI (Dark)" + variants as default, while retaining the original themes as secondary themes):
+
+```bash
+# First, define version, "main" for nightly or "stable" for stable
+export MASTODON_VERSION_FOR_BIRD_UI="main"
+
+# Create a new folder for the theme
+mkdir -p app/javascript/styles/mastodon-bird-ui
+
+# Download the CSS file for single column layout
+wget https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/$MASTODON_VERSION_FOR_BIRD_UI/layout-single-column.css -O app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+
+# Download the CSS file for multiple column layout
+wget https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/$MASTODON_VERSION_FOR_BIRD_UI/layout-multiple-columns.css -O app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+
+# Replace theme-contrast with theme-mastodon-bird-ui-contrast for single column layout
+sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+
+# Replace theme-mastodon-light with theme-mastodon-bird-ui-light for single column layout
+sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+
+# Replace theme-contrast with theme-mastodon-bird-ui-contrast for multiple column layout
+sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+
+# Replace theme-mastodon-light with theme-mastodon-bird-ui-light for multiple column layout
+sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+
+# Create high contrast theme file
+echo -e "@import 'contrast/variables';\n@import 'application';\n@import 'contrast/diff';\n@import 'mastodon-bird-ui/layout-single-column.scss';\n@import 'mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/styles/mastodon-bird-ui-contrast.scss
+
+# Create light theme file
+echo -e "@import 'mastodon-light/variables';\n@import 'application';\n@import 'mastodon-light/diff';\n@import 'mastodon-bird-ui/layout-single-column.scss';\n@import 'mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/styles/mastodon-bird-ui-light.scss
+
+# Create dark theme file
+echo -e "@import 'application';\n@import 'mastodon-bird-ui/layout-single-column.scss';\n@import 'mastodon-bird-ui/layout-multiple-columns.scss';" > app/javascript/styles/mastodon-bird-ui-dark.scss
+
+# Overwrite config/themes.yml with new settings, Mastodon Bird UI dark as default
+echo -e "default: styles/mastodon-bird-ui-dark.scss\nmastodon-bird-ui-light: styles/mastodon-bird-ui-light.scss\nmastodon-bird-ui-contrast: styles/mastodon-bird-ui-contrast.scss\nmastodon-dark: styles/application.scss\nmastodon-light: styles/mastodon-light.scss\ncontrast: styles/contrast.scss" > config/themes.yml
 ```
-app/
-  javascript/
-    styles/
-    elephant.scss                             | **new**
-      contrast/
-        ...
-      fonts/
-        ...
-      elephant/                                   | **new**
-        layout-multiple-columns.scss                               | **new**
-        layout-single-column.scss                              | **new**
+
+After this you need to edit localisations in `config/locales/en.yml` (`nano config/locales/en.yml`) and add these lines:
+
+```yml
+  themes:
+     contrast: Mastodon (High contrast)
+     default: Mastodon Bird UI (Dark)
+     mastodon-bird-ui-light: Mastodon Bird UI (Light)
+     mastodon-bird-ui-contrast: Mastodon Bird UI (High contrast)
+     mastodon-light: Mastodon (Light)
+     mastodon-dark: Mastodon (Dark)
 ```
 
-2. **Add your theme to the config.** This is what [the default themes.yml](https://github.com/tootsuite/mastodon/blob/master/config/themes.yml) looks like in Mastodon. To make your custom theme visible in settings, you need to add a new line in the form `themeName: path/to/theme.scss`. For example, the modern-dark theme would require adding `modern-dark: styles/modern-dark.scss` as a new line.
+Same for the localizations of your choice, for example `config/locales/fi.yml` (`nano config/locales/fi.yml`):
 
-```
-        default: styles/application.scss
-        contrast: styles/contrast.scss
-        mastodon-light: styles/mastodon-light.scss
-        elephant: styles/elephant.scss      | **new**
-```
 
-3. **Add a human-friendly name for the theme (optional).** You can edit each desired language's locale file in `config/locales/[lang].yml` to add a localized string name for your theme's `themeName` as added in the previous step. For example, [the default `config/locales/en.yml`](https://github.com/tootsuite/mastodon/blob/041ff5fa9a45f7b8d1048a05a35611622b6f5fdb/config/locales/en.yml#L942-L945) contains localizations for the three default themes that ship with Mastodon, into the `en`glish language. You need to do this for every language you expect your users to use, or else they will see the unlocalized `themeName` directly.
-
-```
-          themes:
-            contrast: Mastodon (High contrast)
-            default: Mastodon (Dark)
-            mastodon-light: Mastodon (Light)
-            elephant: Elephant              | **new**
+```yml
+  themes:
+     contrast: Mastodon (Korkea kontrasti)
+     default: Mastodon Bird UI (Tumma)
+     mastodon-bird-ui-light: Mastodon Bird UI (Vaalea)
+     mastodon-bird-ui-contrast: Mastodon Bird UI (Korkea kontrasti)
+     mastodon-light: Mastodon (Vaalea)
+     mastodon-dark: Mastodon (Tumma)
 ```
 
-4. **Compile theme assets and restart.** Run `RAILS_ENV=production bundle exec rails assets:precompile` and restart your Mastodon instance for the changes to take effect.
+Make sure everything is set in place, then rebuild all the assets and restart all the services:
 
-![Example of integration](https://github.com/ultramookie/mastodon-bird-ui/assets/38467/1125dc9b-f3a2-431a-860f-d8219d8e0c5c)
+```bash
+bundle install
+rm -rfv public/packs
+yarn install
+RAILS_ENV=production bundle exec rails assets:precompile
+sudo systemctl restart mastodon-web mastodon-sidekiq mastodon-streaming
+sudo systemctl restart postgresql 
+```
+
+And you're done!
 
 ## Installation for regular users, contributing and testing
 
@@ -134,13 +246,52 @@ app/
 3. Open extension and paste the contents of both CSS files into the editor
 4. If you use Live CSS Editor, click 📌-icon so the styles will be remembered for the domain or if you want just to use it as needed, activate styles from the extension's popup
 
+## Updating instructions
+
+If you are using **Custom CSS**, just copy and paste the new version to **Custom CSS** textarea in the Appearance settings in your instance (https://_yourinstance_/admin/settings/appearance). If you are using Mastodon Bird UI as option, get the latest changes to your instance, first cding to live folder (or to wherever your Mastodon root is), then:
+
+```bash
+# First, define version, "main" for nightly or "stable" for stable
+export MASTODON_VERSION_FOR_BIRD_UI="main"
+
+# Download the CSS file for single column layout
+wget --no-cache https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/$MASTODON_VERSION_FOR_BIRD_UI/layout-single-column.css -O app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+
+# Download the CSS file for multiple column layout
+wget --no-cache https://raw.githubusercontent.com/ronilaukkarinen/mastodon-bird-ui/$MASTODON_VERSION_FOR_BIRD_UI/layout-multiple-columns.css -O app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+
+# Replace theme-contrast with theme-mastodon-bird-ui-contrast for single column layout
+sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+
+# Replace theme-mastodon-light with theme-mastodon-bird-ui-light for single column layout
+sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/styles/mastodon-bird-ui/layout-single-column.scss
+
+# Replace theme-contrast with theme-mastodon-bird-ui-contrast for multiple column layout
+sed -i 's/theme-contrast/theme-mastodon-bird-ui-contrast/g' app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+
+# Replace theme-mastodon-light with theme-mastodon-bird-ui-light for multiple column layout
+sed -i 's/theme-mastodon-light/theme-mastodon-bird-ui-light/g' app/javascript/styles/mastodon-bird-ui/layout-multiple-columns.scss
+```
+
+After this commit changes to your Mastodon fork if you have one, then:
+
+```
+RAILS_ENV=production bundle exec rails assets:precompile
+sudo service mastodon-web reload
+```
+
+That's it!
+
 ## Other tweaks and customizations
 
 While Mastodon Bird UI works perfectly fine out of the box, there are some things you might want to modify to make it look even better.
 
 ### Twitter-like link previews
 
-If you like bigger link previews, please implement [this](https://github.com/mastodon/mastodon/issues/21874#issuecomment-1332556018).
+If you like bigger link previews, you can implement one of these:
+
+- [4.1.2-4.1.4 stable](https://github.com/mastodon/mastodon/commit/2fff05710b95c9fe5275a2b022b3348753e55050).
+- [4.1.4 nightly](https://github.com/mastodon/mastodon/commit/e97868ac3d6a72af8cb3c39d9e7fef6892c164f4)
 
 ### Status bar color on Android PWA
 
@@ -159,11 +310,13 @@ If you're a polyglot like me, you can hide the translate link on other languages
 
 ### Thread lines
 
-There is currently no proper thread support in replies on Mastodon core. There's an [issue](https://github.com/mastodon/mastodon/issues/19570#issuecomment-1493057424) about it that I have commented. You should also see the discussion on issue [#4](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/4#issuecomment-1493274306).
+There is support for threads available for the nightly version since ([see PR #24549](https://github.com/mastodon/mastodon/pull/24549)) and if you want to use the native threaded lines, just use main branch from Mastodon. There's a related [issue](https://github.com/mastodon/mastodon/issues/19570#issuecomment-1493057424) about it that I have commented. You should also see the discussion on a Mastodon Bird UI issue [#4](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/4#issuecomment-1493274306).
+
+If you are using 4.1.2, 4.1.3 or 4.1.4 **stable** tag version, you can implement threads with these steps:
 
 1. Implement [this](https://github.com/mastodon/mastodon/compare/main...ronilaukkarinen:mastodon:feat-thread-lines). Tested and online at [mementomori.social](https://mementomori.social). This changes the HTML structure so that creating threaded lines is possible.
-2. Enable Mastodon Bird UI 1.3.8 or later
-3. It works!
+2. Rebuild assets
+3. Enable Mastodon Bird UI 1.3.8 or later
 
 ### Micro-interactions
 
@@ -190,10 +343,6 @@ Not everything is possible via CSS only. In fact, some of the tweaks I had to do
 
 However, even if they were possible, I won't implement all requests. My opinionated choices are not the only answer, but I'm not willing to add every possible customization to this UI as default. I want to keep it simple and extendable.
 
-### I want background-color to the compose form
-
-See the end of [this comment](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/10#issuecomment-1499345796).
-
 ### Why don't you just create an app?
 
 I'm not a software developer. I'm a front end developer (and a bit of a designer) and my expertise is in CSS, UX and HTML. I don't know how to create a Mastodon app for Android, iOS or web and while I know a bit of python, JavaScript, Ruby and other programming languages, I don't have time and patience to create an app from scratch right now.
@@ -216,7 +365,316 @@ Yes! From version 1.5.4 multiple columns are supported. Apply layout-multiple-co
 
 We don't spend much time in the admin interface and it's not a priority for me to style it. It would mean too much work and it's not worth it right now.
 
+### Can you add background-color for compose form box area?
+
+Aesthetically I prefer left and right sides to be "floaty" and I follow the design language from Twitter even if the compose form is there inside the center column. See [this issue](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/10) for the decision not to have it there by default.
+
+You can add it yourself by adding this to your Custom CSS:
+
+```css
+/* Add background color for the compose form */
+/* stylelint-disable-next-line no-duplicate-selectors */
+.layout-single-column .compose-form .compose-form__autosuggest-wrapper,
+.layout-single-column .compose-form .compose-form__buttons-wrapper {
+  background-color: var(--color-mud);
+  border-color: var(--color-mud);
+  padding-top: 0;
+}
+
+/* Fixes to bottom row when there's a background */
+.layout-single-column .compose-form .compose-form__buttons-wrapper {
+  padding-bottom: calc(var(--gap-default) / 2);
+}
+```
+
+### Can you change compose form height and font-size?
+
+Yes YOU can. But they're not there by default, see [this post](https://mementomori.social/@rolle/110657416001531854). Box size has been set to a certain max-height because it helps the people who use assistive on-screen keyboard (suggestion from [@rmattila74](https://energydon.fi/@rmattila74)). For this reason I'm not going to increase height or make it resize too much by default. You can do these modifications for yourself, here's the code for you:
+
+```css
+.layout-single-column .compose-form .autosuggest-textarea__textarea {
+  font-size: 18px;
+  min-height: 300px;
+}
+```
+
+Tweak the values as you like.
+
+### Can you add feature x?
+
+Mastodon Bird UI is CSS only, so I can't add any features. Please send your Mastodon feature ideas [here](https://github.com/mastodon/mastodon/issues).
+
+### Can you make it look like _this_ by default?
+
+Probably yes, but I'm not here to please everyone. Suggestions like [this](https://mementomori.social/@rolle/110658189531503982) are very important and there has been many pull requests and issues already that have helped me to make the UI better. While saying this I'm not going to implement every single suggestion, because there are too many different opinions out there.
+
+If you like, you can always suggest something or create a pull request. You are welcome to create your own fork and modify the UI as you prefer. I hope you have fun with it!
+
+### How to get to settings or faves on mobile?
+
+You can swipe the bottom bar. I know this is not the most obvious feature.
+
+![ezgif com-video-to-gif](https://github.com/ronilaukkarinen/mastodon-bird-ui/assets/1534150/18c832c0-2e3b-4bc2-8323-636cd08b107d)
+
+See issues [Many users don't recognize that the bottom menu is scrollable #26](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/26) and [Swiping bottom bar triggers multi-tasking on some phones #33](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/33).
+
+# Automatic dark/light mode possible?
+
+Not at the moment, for following reasons:
+
+1. Original Mastodon themes were built using CSS classes in body level, Mastodon Bird UI merely follows this logic.
+2. `@media (prefers-color-scheme: dark/light)` does not support `@import` in SCSS inside them, so it's not currently possible to implement new themes with one file. I'm not going to create separate files for dark and light themes, because it would be too much work to maintain.
+3. Many choose to use either dark or light theme.
+
 ## Goals
 
 - **CSS only.** This means some pseudos and modern CSS hacks. The intent is to have the code base as simple and extendable as possible. The styles should be easily modifiable. Ready-made code works when placed in **Custom CSS** box in {yourinstance.social/admin/settings/appearance}
 - **Dependency free.** No JavaScript, no build process, no nothing. Just plain CSS. Linting is optional and just here to make sure the code quality is good.
+
+## Accessibility
+
+Mastodon Bird UI is built accessibility in mind. Please note that many "features" are 100% the same than in the original Mastodon, because this is not a separate app but merely consists of modifications in styles. There is a High contrast version available just like in the original Mastodon.
+
+![image](https://github.com/ronilaukkarinen/mastodon-bird-ui/assets/1534150/030e7243-5a9d-44ea-8284-4be745b13b83)
+
+Programmatically everything is as accessible as Mastodon, color-wise "Pretty good" (WCAG A-AA). Please open [an issue](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues) or a [Mastodon issue](https://github.com/mastodon/mastodon/issues), if you have accessibility concerns. Thank you.
+
+### How to install an Accessible version built for people with serious vision impairment
+
+My wife has Retinitis Pigmentosa and a form of Achromatopsia so it was her wish to be able to use Mastodon better with some accessibility features. When High contrast theme is not enough, you can use the version with:
+
+* Larger font sizes all around
+* Contrast to the max
+* More accessible colors
+* Different colors for links, mentions and hashtags
+
+![Screenshot of Accessible Mastodon Bird UI theme](https://github.com/ronilaukkarinen/mastodon-bird-ui/assets/1534150/0fbf3300-d0cf-4fe6-9365-f6c323c09e02)
+
+If you use a **Custom CSS**/user version, add this to your CSS:
+
+```css
+body.theme-default {
+  --color-accent: #0a9ff9;
+  --color-accent-dark: #1a3ff9;
+  --color-brand-mastodon-text-light: #fff;
+  --color-brand-mastodon-links: #0a9ff9;
+  --color-hashtag: #ff66e3;
+  --color-link: #0a9ff9;
+  --color-mention: #0af9b5;
+  --color-dark: #1a1b36;
+  --color-bg: #000;
+  --color-bg-75: #000000bf;
+  --color-mud: #333;
+  --color-dim: #fff;
+  --color-border: #343638;
+  --color-light-purple: #fff;
+  --color-thread-line: #979b9f;
+  --font-size: 18px;
+  --font-size-smaller: 18px;
+  --font-size-mid: 18px;
+  --font-size-bigger: 18px;
+  --font-size-12: 14px;
+  --font-size-heading: 20px;
+  --line-height: 24px;
+  --line-height-mid: 22px;
+  --icon-search: url("data:image/svg+xml;charset=utf-8, %3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' aria-hidden='true' viewBox='0 0 24 24'%3E%3Cpath d='M10.25 3.75a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm-8.5 6.5a8.5 8.5 0 1 1 15.176 5.262l4.781 4.781-1.414 1.414-4.781-4.781A8.5 8.5 0 0 1 1.75 10.25z'/%3E%3C/svg%3E");
+  --logo: url('data:image/svg+xml, %3Csvg class="mastodon-logo" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 216.4144 232.00976"%3E%3Cdefs xmlns="http://www.w3.org/2000/svg"%3E%3ClinearGradient xmlns="http://www.w3.org/2000/svg" id="gradient" x2="0%25" y2="100%25" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0%25" stop-color="%231a3ff9"%3E%3C/stop%3E%3Cstop offset="100%25" stop-color="%231a3ff9"%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath xmlns="http://www.w3.org/2000/svg" d="M211.80734 139.0875c-3.18125 16.36625-28.4925 34.2775-57.5625 37.74875-15.15875 1.80875-30.08375 3.47125-45.99875 2.74125-26.0275-1.1925-46.565-6.2125-46.565-6.2125 0 2.53375.15625 4.94625.46875 7.2025 3.38375 25.68625 25.47 27.225 46.39125 27.9425 21.11625.7225 39.91875-5.20625 39.91875-5.20625l.8675 19.09s-14.77 7.93125-41.08125 9.39c-14.50875.7975-32.52375-.365-53.50625-5.91875C9.23234 213.82 1.40609 165.31125.20859 116.09125c-.365-14.61375-.14-28.39375-.14-39.91875 0-50.33 32.97625-65.0825 32.97625-65.0825C49.67234 3.45375 78.20359.2425 107.86484 0h.72875c29.66125.2425 58.21125 3.45375 74.8375 11.09 0 0 32.975 14.7525 32.975 65.0825 0 0 .41375 37.13375-4.59875 62.915" fill="url(%23gradient)"%3E%3C/path%3E%3Cpath d="M177.50984 80.077v60.94125h-24.14375v-59.15c0-12.46875-5.24625-18.7975-15.74-18.7975-11.6025 0-17.4175 7.5075-17.4175 22.3525v32.37625H96.20734V85.42325c0-14.845-5.81625-22.3525-17.41875-22.3525-10.49375 0-15.74 6.32875-15.74 18.7975v59.15H38.90484V80.077c0-12.455 3.17125-22.3525 9.54125-29.675 6.56875-7.3225 15.17125-11.07625 25.85-11.07625 12.355 0 21.71125 4.74875 27.8975 14.2475l6.01375 10.08125 6.015-10.08125c6.185-9.49875 15.54125-14.2475 27.8975-14.2475 10.6775 0 19.28 3.75375 25.85 11.07625 6.36875 7.3225 9.54 17.22 9.54 29.675" fill="%23fff"%3E%3C/path%3E%3C/svg%3E');
+  --icon-bookmark: url('data:image/svg+xml, %0A%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark"%3E%3Cpath d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"%3E%3C/path%3E%3C/svg%3E');
+  --icon-boost-status: url("data:image/svg+xml, %0A%3Csvg viewBox='0 0 24 24' color='inherit' width='18' height='18' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='%23fff' d='M6 4h15a1 1 0 0 1 1 1v7h-2V6H6v3L1 5l5-4v3zm12 16H3a1 1 0 0 1-1-1v-7h2v6h14v-3l5 4l-5 4v-3z'/%3E%3C/svg%3E");
+  --icon-reply: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='18' height='18' fill='%23fff' aria-hidden='true'%3E%3Cg%3E%3Cpath d='M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  --icon-follow-hashtag: url('data:image/svg+xml, %3Csvg version="1.0" xmlns="http://www.w3.org/2000/svg" width="18px" height="auto" viewBox="0 0 462 439"%3E%3Cpath fill="%23ffffff" d="M139 11.7c-3.5 2.5-6.2 5.4-7.7 8.3-2.5 4.8-2.5 5.2-7.8 52.5-1.4 12.6-3.5 31.4-4.7 41.7l-2.1 18.7-48.6.3-48.6.3-5 3.1C7.2 141.1 3 148.4 3 156.7c0 4.4.6 7.6 2 10.2 2.7 5.4 10.1 11.6 15.5 13 2.9.7 19.2 1.1 47.8 1.1 40.9 0 43.5.1 43.1 1.7-.4 1.9-8.4 73.2-8.4 75.2 0 .8-11.4 1.1-41 1.1H20.9l-4.8 2.5C7.5 265.8 3 273 3 282.5s4.5 16.7 13.1 21l4.8 2.5H97.6l-5.3 46.7c-2.9 25.8-5.4 50.3-5.5 54.5-.1 7 .2 8.2 2.8 12.5 1.7 2.7 5.1 6.2 7.8 8 4.5 3.1 5.4 3.3 13 3.3 8.9 0 10.2-.5 16.8-6.8 4.8-4.6 6.3-9.3 8.2-26.7.9-7.7 2.7-23.9 4-36 1.4-12.1 3.3-29.5 4.3-38.8l1.7-16.7H214.7l.5-8.3c.7-9.8 1.4-11.5 8.2-18.5 8.6-9 7-8.7 41.4-9l30.2-.3V259h-9.5c-9.4 0-9.5 0-9.1-2.3.3-1.2 1.5-10.8 2.6-21.2 1.2-10.5 3-26.5 4.1-35.7 1-9.2 1.9-17.2 1.9-17.8 0-.7 12.3-1 38.5-1 23.5 0 40.3-.4 43.4-1.1 6.1-1.3 13.5-7.4 16.2-13.4 5.2-11.4.2-24.9-11.5-30.9l-4.9-2.6H290.4l5.3-46.8c5.3-47.1 6.1-59 4.3-63.6-1.4-3.7-7.9-10.5-12.1-12.7C285.2 8.6 282 8 277.2 8c-6.2 0-7.5.4-11.8 3.2-9.2 6.2-10.1 8.6-12.9 31.8-3.4 28.9-7.2 63.4-8.7 77.7l-1.2 12.3h-77.8l.6-4.3c.3-2.3.8-7.1 1.1-10.7.6-6.1 2.5-23.4 7.6-68 1.2-10.8 1.9-21.1 1.6-23.1-1.1-5.5-6.2-12.6-11.4-15.9-4.2-2.7-5.6-3-12.3-3-7.2 0-8 .2-13 3.7zm97.5 174.5c-.4 2.9-1.5 12.9-2.5 22.3-1.1 9.3-2.7 24.5-3.7 33.7l-1.7 16.8H150.9l.6-6.3c.3-3.4 1.7-15.7 3-27.2 1.3-11.6 2.9-26.3 3.6-32.8l1.2-11.7H237l-.5 5.2z"/%3E%3Cpath fill="%23ffffff" d="M317.2 207c-1.8 1.1-4.1 3.4-5.2 5.2-1.9 3.1-2 5.1-2 38V285h-34.7c-33 0-35 .1-38.1 2-6.7 4.1-7.2 6-7.2 30s.5 25.9 7.2 30c3.1 1.9 5.1 2 38.1 2H310v34.7c0 33 .1 35 2 38.1 4.1 6.7 6 7.2 30 7.2s25.9-.5 30-7.2c1.9-3.1 2-5.1 2-38.1V349h34.8c32.9 0 34.9-.1 38-2 6.7-4.1 7.2-6 7.2-30s-.5-25.9-7.2-30c-3.1-1.9-5.1-2-38-2H374v-34.8c0-32.9-.1-34.9-2-38-4.1-6.7-6-7.2-30-7.2-19.7 0-21.8.2-24.8 2z"/%3E%3Cpath fill="%23ffffff" d="M217.2 359.7c-5 43.2-5.5 50-4.2 54.7 1.5 5.4 7.5 12.7 12.4 15 5.2 2.4 17.1 2.2 21.6-.5 8.9-5.3 12.3-11.7 13.4-25.4.9-10.2 3.5-33.2 4.2-36.6l.5-2.7-15.3-.4c-10.1-.2-16.1-.8-17.8-1.7-1.4-.7-5-3.8-8.1-6.8l-5.6-5.4-1.1 9.8z"/%3E%3C/svg%3E');
+  --icon-boost: url("data:image/svg+xml, %0A%3Csvg viewBox='0 0 24 24' color='inherit' width='18' height='18' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='%23ffffff' d='M6 4h15a1 1 0 0 1 1 1v7h-2V6H6v3L1 5l5-4v3zm12 16H3a1 1 0 0 1-1-1v-7h2v6h14v-3l5 4l-5 4v-3z'/%3E%3C/svg%3E");
+  --icon-boost-notification-filter-bar: url("data:image/svg+xml, %0A%3Csvg viewBox='0 0 24 24' color='inherit' width='18' height='18' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='%23ffffff' d='M6 4h15a1 1 0 0 1 1 1v7h-2V6H6v3L1 5l5-4v3zm12 16H3a1 1 0 0 1-1-1v-7h2v6h14v-3l5 4l-5 4v-3z'/%3E%3C/svg%3E");
+  --icon-reply: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='18' height='18' fill='%23ffffff' aria-hidden='true'%3E%3Cg%3E%3Cpath d='M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  --icon-reply-detailed-status-action-bar: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='18' height='18' fill='%23ffffff' aria-hidden='true'%3E%3Cg%3E%3Cpath d='M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  --icon-share-detailed-status-action-bar: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-share'%3E%3Cpath d='M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8'%3E%3C/path%3E%3Cpolyline points='16 6 12 2 8 6'%3E%3C/polyline%3E%3Cline x1='12' y1='2' x2='12' y2='15'%3E%3C/line%3E%3C/svg%3E");
+  --icon-bookmark-detailed-status-action-bar: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20' fill='%23ffffff' aria-hidden='true'%3E%3Cg%3E%3Cpath d='M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  --icon-bookmark-detailed-status-action-bar-hover: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20' fill='%23F91880' aria-hidden='true'%3E%3Cg%3E%3Cpath d='M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  --icon-share: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-share'%3E%3Cpath d='M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8'%3E%3C/path%3E%3Cpolyline points='16 6 12 2 8 6'%3E%3C/polyline%3E%3Cline x1='12' y1='2' x2='12' y2='15'%3E%3C/line%3E%3C/svg%3E");
+  --icon-heart: url("data:image/svg+xml, %0A%3Csvg viewBox='0 0 24 24' color='inherit' width='20' height='20' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='%23ffffff' d='M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2zm-3.566 15.604a26.953 26.953 0 0 0 2.42-1.701C18.335 14.533 20 11.943 20 9c0-2.36-1.537-4-3.5-4c-1.076 0-2.24.57-3.086 1.414L12 7.828l-1.414-1.414C9.74 5.57 8.576 5 7.5 5C5.56 5 4 6.656 4 9c0 2.944 1.666 5.533 4.645 7.903c.745.592 1.54 1.145 2.421 1.7c.299.189.595.37.934.572c.339-.202.635-.383.934-.571z'/%3E%3C/svg%3E");
+  --icon-home-notification: url('data:image/svg+xml, %0A%3Csvg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"%3E%3Ctitle%3EHome%3C/title%3E%3Cpath d="M80 212v236a16 16 0 0016 16h96V328a24 24 0 0124-24h80a24 24 0 0124 24v136h96a16 16 0 0016-16V212" fill="none" stroke="%23ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="38"/%3E%3Cpath d="M480 256L266.89 52c-5-5.28-16.69-5.34-21.78 0L32 256M400 179V64h-48v69" fill="none" stroke="%23ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="38"/%3E%3C/svg%3E');
+  --icon-star: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="%23ffffff" stroke-width="5.5" viewBox="0 0 68 68"%3E%3Cpath d="M31.4 3.8c-.7.4-2.5 5-4.1 10.2l-2.9 9.5-9.9.5c-5.5.3-10.6.9-11.3 1.3-.6.5-1.2 1.9-1.2 3.3 0 2 1.5 3.4 8 7.5 4.4 2.8 8 5.5 8 6s-1.3 4.5-3 9.1c-3.6 9.7-3.7 11.4-.9 12.8 2.7 1.5 3.5 1.1 12.4-5.6l7.5-5.6 8.2 6.1c8.4 6.3 11.2 7.1 13.2 3.9.8-1.4.3-3.9-2.2-11-1.8-5.1-3.2-9.6-3.2-9.9 0-.4 3.6-3 8-5.8 6.5-4.1 8-5.5 8-7.5 0-1.4-.6-2.8-1.2-3.3-.7-.4-5.8-1-11.3-1.3l-9.9-.5-2.9-9.5C37.8 4.6 36.9 3 34 3c-.8 0-2 .4-2.6.8z"/%3E%3C/svg%3E%0A');
+}
+
+@media (max-width: 700px) {
+  body.theme-mastodon-bird-ui-accessible {
+    --font-size: 22px;
+    --line-height: 30px;
+  }
+}
+
+.layout-single-column .icon-with-badge__badge {
+  font-size: 14px;
+  padding: 3px 6px;
+  top: -10px;
+}
+
+/* Custom for mementomori.social */
+.status__content__text[lang="fi"].translate ~ .status__content__read-more-button {
+  display: none;
+}
+
+.layout-single-column .compose-form .autosuggest-textarea__textarea {
+  max-height: 20vh !important;
+  height: auto !important;
+}
+
+/* Add background color for the compose form */
+/* stylelint-disable-next-line no-duplicate-selectors */
+.layout-multiple-columns .compose-form .compose-form__autosuggest-wrapper,
+.layout-multiple-columns .compose-form .compose-form__buttons-wrapper,
+.layout-single-column .compose-form .compose-form__autosuggest-wrapper,
+.layout-single-column .compose-form .compose-form__buttons-wrapper {
+  background-color: var(--color-mud);
+  border-color: var(--color-mud);
+  padding-top: 0;
+}
+
+/* Fixes to bottom row when there's a background */
+.layout-multiple-columns .compose-form .compose-form__buttons-wrapper,
+.layout-single-column .compose-form .compose-form__buttons-wrapper {
+  padding-bottom: calc(var(--gap-default) / 2);
+}
+```
+
+If you use bash commands in: [Make Mastodon Bird UI as optional by integrating it as 'Site theme' in settings for all users](#make-mastodon-bird-ui-as-optional-by-integrating-it-as-site-theme-in-settings-for-all-users) - do this:
+
+```bash
+# Go into your Mastodon base
+cd $HOME/live
+
+# Copy contrast theme as base
+cp app/javascript/styles/mastodon-bird-ui-contrast.scss app/javascript/styles/mastodon-bird-ui-accessible.scss
+
+# Edit the file and add CSS below right after last @import
+nano app/javascript/styles/mastodon-bird-ui-accessible.scss
+
+# Add your new theme to config:
+# mastodon-bird-ui-a11y: styles/mastodon-bird-ui-accessible.scss
+nano config/themes.yml
+```
+
+CSS for `mastodon-bird-ui-accessible` theme:
+
+```css
+@import 'contrast/variables';
+@import 'application';
+@import 'contrast/diff';
+@import 'mastodon-bird-ui/layout-single-column.scss';
+@import 'mastodon-bird-ui/layout-multiple-columns.scss';
+
+body.theme-mastodon-bird-ui-accessible {
+  --color-accent: #0a9ff9;
+  --color-accent-dark: #1a3ff9;
+  --color-brand-mastodon-text-light: #fff;
+  --color-brand-mastodon-links: #0a9ff9;
+  --color-hashtag: #ff66e3;
+  --color-link: #0a9ff9;
+  --color-mention: #0af9b5;
+  --color-dark: #1a1b36;
+  --color-bg: #000;
+  --color-bg-75: #000000bf;
+  --color-mud: #333;
+  --color-dim: #fff;
+  --color-border: #343638;
+  --color-light-purple: #fff;
+  --color-thread-line: #979b9f;
+  --font-size: 18px;
+  --font-size-smaller: 18px;
+  --font-size-mid: 18px;
+  --font-size-bigger: 18px;
+  --font-size-12: 14px;
+  --font-size-heading: 20px;
+  --line-height: 24px;
+  --line-height-mid: 22px;
+  --icon-search: url("data:image/svg+xml;charset=utf-8, %3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' aria-hidden='true' viewBox='0 0 24 24'%3E%3Cpath d='M10.25 3.75a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13zm-8.5 6.5a8.5 8.5 0 1 1 15.176 5.262l4.781 4.781-1.414 1.414-4.781-4.781A8.5 8.5 0 0 1 1.75 10.25z'/%3E%3C/svg%3E");
+  --logo: url('data:image/svg+xml, %3Csvg class="mastodon-logo" xmlns="http://www.w3.org/2000/svg" width="28px" height="28px" viewBox="0 0 216.4144 232.00976"%3E%3Cdefs xmlns="http://www.w3.org/2000/svg"%3E%3ClinearGradient xmlns="http://www.w3.org/2000/svg" id="gradient" x2="0%25" y2="100%25" gradientUnits="userSpaceOnUse"%3E%3Cstop offset="0%25" stop-color="%231a3ff9"%3E%3C/stop%3E%3Cstop offset="100%25" stop-color="%231a3ff9"%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath xmlns="http://www.w3.org/2000/svg" d="M211.80734 139.0875c-3.18125 16.36625-28.4925 34.2775-57.5625 37.74875-15.15875 1.80875-30.08375 3.47125-45.99875 2.74125-26.0275-1.1925-46.565-6.2125-46.565-6.2125 0 2.53375.15625 4.94625.46875 7.2025 3.38375 25.68625 25.47 27.225 46.39125 27.9425 21.11625.7225 39.91875-5.20625 39.91875-5.20625l.8675 19.09s-14.77 7.93125-41.08125 9.39c-14.50875.7975-32.52375-.365-53.50625-5.91875C9.23234 213.82 1.40609 165.31125.20859 116.09125c-.365-14.61375-.14-28.39375-.14-39.91875 0-50.33 32.97625-65.0825 32.97625-65.0825C49.67234 3.45375 78.20359.2425 107.86484 0h.72875c29.66125.2425 58.21125 3.45375 74.8375 11.09 0 0 32.975 14.7525 32.975 65.0825 0 0 .41375 37.13375-4.59875 62.915" fill="url(%23gradient)"%3E%3C/path%3E%3Cpath d="M177.50984 80.077v60.94125h-24.14375v-59.15c0-12.46875-5.24625-18.7975-15.74-18.7975-11.6025 0-17.4175 7.5075-17.4175 22.3525v32.37625H96.20734V85.42325c0-14.845-5.81625-22.3525-17.41875-22.3525-10.49375 0-15.74 6.32875-15.74 18.7975v59.15H38.90484V80.077c0-12.455 3.17125-22.3525 9.54125-29.675 6.56875-7.3225 15.17125-11.07625 25.85-11.07625 12.355 0 21.71125 4.74875 27.8975 14.2475l6.01375 10.08125 6.015-10.08125c6.185-9.49875 15.54125-14.2475 27.8975-14.2475 10.6775 0 19.28 3.75375 25.85 11.07625 6.36875 7.3225 9.54 17.22 9.54 29.675" fill="%23fff"%3E%3C/path%3E%3C/svg%3E');
+  --icon-bookmark: url('data:image/svg+xml, %0A%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%23fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bookmark"%3E%3Cpath d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"%3E%3C/path%3E%3C/svg%3E');
+  --icon-boost-status: url("data:image/svg+xml, %0A%3Csvg viewBox='0 0 24 24' color='inherit' width='18' height='18' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='%23fff' d='M6 4h15a1 1 0 0 1 1 1v7h-2V6H6v3L1 5l5-4v3zm12 16H3a1 1 0 0 1-1-1v-7h2v6h14v-3l5 4l-5 4v-3z'/%3E%3C/svg%3E");
+  --icon-follow-hashtag: url('data:image/svg+xml, %3Csvg version="1.0" xmlns="http://www.w3.org/2000/svg" width="18px" height="auto" viewBox="0 0 462 439"%3E%3Cpath fill="%23ffffff" d="M139 11.7c-3.5 2.5-6.2 5.4-7.7 8.3-2.5 4.8-2.5 5.2-7.8 52.5-1.4 12.6-3.5 31.4-4.7 41.7l-2.1 18.7-48.6.3-48.6.3-5 3.1C7.2 141.1 3 148.4 3 156.7c0 4.4.6 7.6 2 10.2 2.7 5.4 10.1 11.6 15.5 13 2.9.7 19.2 1.1 47.8 1.1 40.9 0 43.5.1 43.1 1.7-.4 1.9-8.4 73.2-8.4 75.2 0 .8-11.4 1.1-41 1.1H20.9l-4.8 2.5C7.5 265.8 3 273 3 282.5s4.5 16.7 13.1 21l4.8 2.5H97.6l-5.3 46.7c-2.9 25.8-5.4 50.3-5.5 54.5-.1 7 .2 8.2 2.8 12.5 1.7 2.7 5.1 6.2 7.8 8 4.5 3.1 5.4 3.3 13 3.3 8.9 0 10.2-.5 16.8-6.8 4.8-4.6 6.3-9.3 8.2-26.7.9-7.7 2.7-23.9 4-36 1.4-12.1 3.3-29.5 4.3-38.8l1.7-16.7H214.7l.5-8.3c.7-9.8 1.4-11.5 8.2-18.5 8.6-9 7-8.7 41.4-9l30.2-.3V259h-9.5c-9.4 0-9.5 0-9.1-2.3.3-1.2 1.5-10.8 2.6-21.2 1.2-10.5 3-26.5 4.1-35.7 1-9.2 1.9-17.2 1.9-17.8 0-.7 12.3-1 38.5-1 23.5 0 40.3-.4 43.4-1.1 6.1-1.3 13.5-7.4 16.2-13.4 5.2-11.4.2-24.9-11.5-30.9l-4.9-2.6H290.4l5.3-46.8c5.3-47.1 6.1-59 4.3-63.6-1.4-3.7-7.9-10.5-12.1-12.7C285.2 8.6 282 8 277.2 8c-6.2 0-7.5.4-11.8 3.2-9.2 6.2-10.1 8.6-12.9 31.8-3.4 28.9-7.2 63.4-8.7 77.7l-1.2 12.3h-77.8l.6-4.3c.3-2.3.8-7.1 1.1-10.7.6-6.1 2.5-23.4 7.6-68 1.2-10.8 1.9-21.1 1.6-23.1-1.1-5.5-6.2-12.6-11.4-15.9-4.2-2.7-5.6-3-12.3-3-7.2 0-8 .2-13 3.7zm97.5 174.5c-.4 2.9-1.5 12.9-2.5 22.3-1.1 9.3-2.7 24.5-3.7 33.7l-1.7 16.8H150.9l.6-6.3c.3-3.4 1.7-15.7 3-27.2 1.3-11.6 2.9-26.3 3.6-32.8l1.2-11.7H237l-.5 5.2z"/%3E%3Cpath fill="%23ffffff" d="M317.2 207c-1.8 1.1-4.1 3.4-5.2 5.2-1.9 3.1-2 5.1-2 38V285h-34.7c-33 0-35 .1-38.1 2-6.7 4.1-7.2 6-7.2 30s.5 25.9 7.2 30c3.1 1.9 5.1 2 38.1 2H310v34.7c0 33 .1 35 2 38.1 4.1 6.7 6 7.2 30 7.2s25.9-.5 30-7.2c1.9-3.1 2-5.1 2-38.1V349h34.8c32.9 0 34.9-.1 38-2 6.7-4.1 7.2-6 7.2-30s-.5-25.9-7.2-30c-3.1-1.9-5.1-2-38-2H374v-34.8c0-32.9-.1-34.9-2-38-4.1-6.7-6-7.2-30-7.2-19.7 0-21.8.2-24.8 2z"/%3E%3Cpath fill="%23ffffff" d="M217.2 359.7c-5 43.2-5.5 50-4.2 54.7 1.5 5.4 7.5 12.7 12.4 15 5.2 2.4 17.1 2.2 21.6-.5 8.9-5.3 12.3-11.7 13.4-25.4.9-10.2 3.5-33.2 4.2-36.6l.5-2.7-15.3-.4c-10.1-.2-16.1-.8-17.8-1.7-1.4-.7-5-3.8-8.1-6.8l-5.6-5.4-1.1 9.8z"/%3E%3C/svg%3E');
+  --icon-boost: url("data:image/svg+xml, %0A%3Csvg viewBox='0 0 24 24' color='inherit' width='18' height='18' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='%23ffffff' d='M6 4h15a1 1 0 0 1 1 1v7h-2V6H6v3L1 5l5-4v3zm12 16H3a1 1 0 0 1-1-1v-7h2v6h14v-3l5 4l-5 4v-3z'/%3E%3C/svg%3E");
+  --icon-boost-notification-filter-bar: url("data:image/svg+xml, %0A%3Csvg viewBox='0 0 24 24' color='inherit' width='18' height='18' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='%23ffffff' d='M6 4h15a1 1 0 0 1 1 1v7h-2V6H6v3L1 5l5-4v3zm12 16H3a1 1 0 0 1-1-1v-7h2v6h14v-3l5 4l-5 4v-3z'/%3E%3C/svg%3E");
+  --icon-reply: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='18' height='18' fill='%23ffffff' aria-hidden='true'%3E%3Cg%3E%3Cpath d='M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  --icon-reply-detailed-status-action-bar: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='18' height='18' fill='%23ffffff' aria-hidden='true'%3E%3Cg%3E%3Cpath d='M1.751 10c0-4.42 3.584-8 8.005-8h4.366c4.49 0 8.129 3.64 8.129 8.13 0 2.96-1.607 5.68-4.196 7.11l-8.054 4.46v-3.69h-.067c-4.49.1-8.183-3.51-8.183-8.01zm8.005-6c-3.317 0-6.005 2.69-6.005 6 0 3.37 2.77 6.08 6.138 6.01l.351-.01h1.761v2.3l5.087-2.81c1.951-1.08 3.163-3.13 3.163-5.36 0-3.39-2.744-6.13-6.129-6.13H9.756z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  --icon-share-detailed-status-action-bar: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-share'%3E%3Cpath d='M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8'%3E%3C/path%3E%3Cpolyline points='16 6 12 2 8 6'%3E%3C/polyline%3E%3Cline x1='12' y1='2' x2='12' y2='15'%3E%3C/line%3E%3C/svg%3E");
+  --icon-bookmark-detailed-status-action-bar: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20' fill='%23ffffff' aria-hidden='true'%3E%3Cg%3E%3Cpath d='M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  --icon-bookmark-detailed-status-action-bar-hover: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='20' height='20' fill='%23F91880' aria-hidden='true'%3E%3Cg%3E%3Cpath d='M4 4.5C4 3.12 5.119 2 6.5 2h11C18.881 2 20 3.12 20 4.5v18.44l-8-5.71-8 5.71V4.5zM6.5 4c-.276 0-.5.22-.5.5v14.56l6-4.29 6 4.29V4.5c0-.28-.224-.5-.5-.5h-11z'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
+  --icon-share: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='feather feather-share'%3E%3Cpath d='M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8'%3E%3C/path%3E%3Cpolyline points='16 6 12 2 8 6'%3E%3C/polyline%3E%3Cline x1='12' y1='2' x2='12' y2='15'%3E%3C/line%3E%3C/svg%3E");
+  --icon-heart: url("data:image/svg+xml, %0A%3Csvg viewBox='0 0 24 24' color='inherit' width='20' height='20' xmlns='http://www.w3.org/2000/svg' %3E%3Cpath fill='%23ffffff' d='M16.5 3C19.538 3 22 5.5 22 9c0 7-7.5 11-10 12.5C9.5 20 2 16 2 9c0-3.5 2.5-6 5.5-6C9.36 3 11 4 12 5c1-1 2.64-2 4.5-2zm-3.566 15.604a26.953 26.953 0 0 0 2.42-1.701C18.335 14.533 20 11.943 20 9c0-2.36-1.537-4-3.5-4c-1.076 0-2.24.57-3.086 1.414L12 7.828l-1.414-1.414C9.74 5.57 8.576 5 7.5 5C5.56 5 4 6.656 4 9c0 2.944 1.666 5.533 4.645 7.903c.745.592 1.54 1.145 2.421 1.7c.299.189.595.37.934.572c.339-.202.635-.383.934-.571z'/%3E%3C/svg%3E");
+  --icon-home-notification: url('data:image/svg+xml, %0A%3Csvg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512"%3E%3Ctitle%3EHome%3C/title%3E%3Cpath d="M80 212v236a16 16 0 0016 16h96V328a24 24 0 0124-24h80a24 24 0 0124 24v136h96a16 16 0 0016-16V212" fill="none" stroke="%23ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="38"/%3E%3Cpath d="M480 256L266.89 52c-5-5.28-16.69-5.34-21.78 0L32 256M400 179V64h-48v69" fill="none" stroke="%23ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="38"/%3E%3C/svg%3E');
+  --icon-star: url('data:image/svg+xml, %3Csvg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="%23ffffff" stroke-width="5.5" viewBox="0 0 68 68"%3E%3Cpath d="M31.4 3.8c-.7.4-2.5 5-4.1 10.2l-2.9 9.5-9.9.5c-5.5.3-10.6.9-11.3 1.3-.6.5-1.2 1.9-1.2 3.3 0 2 1.5 3.4 8 7.5 4.4 2.8 8 5.5 8 6s-1.3 4.5-3 9.1c-3.6 9.7-3.7 11.4-.9 12.8 2.7 1.5 3.5 1.1 12.4-5.6l7.5-5.6 8.2 6.1c8.4 6.3 11.2 7.1 13.2 3.9.8-1.4.3-3.9-2.2-11-1.8-5.1-3.2-9.6-3.2-9.9 0-.4 3.6-3 8-5.8 6.5-4.1 8-5.5 8-7.5 0-1.4-.6-2.8-1.2-3.3-.7-.4-5.8-1-11.3-1.3l-9.9-.5-2.9-9.5C37.8 4.6 36.9 3 34 3c-.8 0-2 .4-2.6.8z"/%3E%3C/svg%3E%0A');
+}
+
+@media (max-width: 700px) {
+  body.theme-mastodon-bird-ui-accessible {
+    --font-size: 22px;
+    --line-height: 30px;
+  }
+}
+
+.layout-single-column .icon-with-badge__badge {
+  font-size: 14px;
+  padding: 3px 6px;
+  top: -10px;
+}
+
+/* Custom for mementomori.social */
+.status__content__text[lang="fi"].translate ~ .status__content__read-more-button {
+  display: none;
+}
+
+.layout-single-column .compose-form .autosuggest-textarea__textarea {
+  max-height: 20vh !important;
+  height: auto !important;
+}
+
+/* Add background color for the compose form */
+/* stylelint-disable-next-line no-duplicate-selectors */
+.layout-multiple-columns .compose-form .compose-form__autosuggest-wrapper,
+.layout-multiple-columns .compose-form .compose-form__buttons-wrapper,
+.layout-single-column .compose-form .compose-form__autosuggest-wrapper,
+.layout-single-column .compose-form .compose-form__buttons-wrapper {
+  background-color: var(--color-mud);
+  border-color: var(--color-mud);
+  padding-top: 0;
+}
+
+/* Fixes to bottom row when there's a background */
+.layout-multiple-columns .compose-form .compose-form__buttons-wrapper,
+.layout-single-column .compose-form .compose-form__buttons-wrapper {
+  padding-bottom: calc(var(--gap-default) / 2);
+}
+```
+
+After this you need to edit localisations in `config/locales/en.yml` (`nano config/locales/en.yml`) and add these lines:
+
+```yml
+  themes:
+     contrast: Mastodon (High contrast)
+     default: Mastodon Bird UI (Dark)
+     mastodon-bird-ui-light: Mastodon Bird UI (Light)
+     mastodon-bird-ui-contrast: Mastodon Bird UI (High contrast)
+     mastodon-light: Mastodon (Light)
+     mastodon-dark: Mastodon (Dark)
+     mastodon-bird-ui-accessible: Mastodon Bird UI (Ultra accessible)
+```
+
+Same for the localizations of your choice, for example `config/locales/fi.yml` (`nano config/locales/fi.yml`):
+
+```yml
+  themes:
+     contrast: Mastodon (Korkea kontrasti)
+     default: Mastodon Bird UI (Tumma)
+     mastodon-bird-ui-light: Mastodon Bird UI (Vaalea)
+     mastodon-bird-ui-contrast: Mastodon Bird UI (Korkea kontrasti)
+     mastodon-light: Mastodon (Vaalea)
+     mastodon-dark: Mastodon (Tumma)
+     mastodon-bird-ui-accessible: Mastodon Bird UI (Saavutettavuus huomioitu)
+```
+
+Now rebuild assets and restart mastodon-web service:
+
+```shell
+RAILS_ENV=production bundle exec rails assets:precompile
+sudo systemctl restart mastodon-web
+```
