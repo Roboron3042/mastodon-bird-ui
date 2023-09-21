@@ -1,6 +1,6 @@
 ## Mastodon with modern birdsite-like UI
 
-[![Build Status for CSS](https://github.com/ronilaukkarinen/mastodon-bird-ui/actions/workflows/styles.yml/badge.svg)](https://github.com/ronilaukkarinen/mastodon-bird-ui/actions/workflows/styles.yml) [![Supported Mastodon version](https://img.shields.io/badge/mastodon-v4.2.0beta3-595aff)](https://github.com/mastodon/mastodon) <a href="https://github.com/sponsors/ronilaukkarinen"><img src="https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white" height="20px"> <a href="https://www.buymeacoffee.com/Fd140aV"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-orange.png" height="20px"></a>
+[![Build Status for CSS](https://github.com/ronilaukkarinen/mastodon-bird-ui/actions/workflows/styles.yml/badge.svg)](https://github.com/ronilaukkarinen/mastodon-bird-ui/actions/workflows/styles.yml) [![Supported Mastodon version](https://img.shields.io/badge/mastodon-v4.2.0beta3-595aff)](https://github.com/mastodon/mastodon) <a href="https://github.com/sponsors/ronilaukkarinen"><img src="https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#white" alt="GitHub Sponsor" height="20px"></a> <a href="https://ko-fi.com/rolle"><img src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Ko-fi" height="20px"></a> <a href="https://www.buymeacoffee.com/Fd140aV"><img src="https://cdn.buymeacoffee.com/buttons/v2/arial-orange.png" height="20px"></a>
 
 Blasphemy! Yes, I know, but I just had to do this. I wanted to see if it's possible to get <a href="https://github.com/mastodon/mastodon">Mastodon</a> default user interface to resemble Twitter, but be a lot better than it ever was.
 
@@ -12,13 +12,6 @@ Read the blog post: [The day I decided to build my own "Twitter"](https://rolle.
 ## [Live demo on mementomori.social](https://mementomori.social)
 
 ![mbui (3)](https://github.com/ronilaukkarinen/mastodon-bird-ui/assets/1534150/144cca29-2fcf-4d94-8a83-b3526dbdd420)
-
-## Versions
-
-Mastodon Bird UI uses the following version formatting: _semver + stability tag, for example: `1.5.8rc4-nightly`. First, check the Mastodon version you're running, then choose the version for Mastodon Bird UI. If you're running Mastodon **stable** (from tags), choose the version for it below. If you're running Mastodon nightly (from main branch), choose the version `Mastodon nightly (main branch)`.
-
-- [Mastodon 4.1.2, 4.1.3, 4.1.4, 4.1.5, 4.1.6, 4.1.7 stable versions](https://github.com/ronilaukkarinen/mastodon-bird-ui/tree/stable)
-- [Mastodon nightly (main branch)](https://github.com/ronilaukkarinen/mastodon-bird-ui/tree/main)
 
 ## Table of contents
 
