@@ -4647,16 +4647,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
  * -------------------------------------
  */
 
-/* Add background color for the compose form */
-/* stylelint-disable-next-line no-duplicate-selectors */
-.layout-single-column .compose-form .compose-form__autosuggest-wrapper,
-.layout-single-column .compose-form .compose-form__buttons-wrapper {
-  background-color: var(--color-mud);
-  border-color: var(--color-mud);
-  padding-top: 0;
-}
-
-/* Fixes to bottom row when there's a background */
-.layout-single-column .compose-form .compose-form__buttons-wrapper {
-  padding-bottom: calc(var(--gap-default) / 2);
+/* Fix button floating over the compose panel */
+.layout-single-column .compose-form__autosuggest-wrapper, .layout-single-column .compose-panel, .layout-single-column .compose-panel .compose-form {
+  overflow: scroll;
 }
