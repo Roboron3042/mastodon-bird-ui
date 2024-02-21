@@ -3584,52 +3584,44 @@ body.embed .button.logo-button:hover,
     text-align: center;
   }
 
-  .layout-single-column .navigation-panel .column-link:nth-child(1) {
-    order: 2;
-  }
-
-  /* Home */
-  .layout-single-column .navigation-panel .column-link:nth-child(2) {
+  .layout-single-column .navigation-panel .column-link[href="/home"] {
     order: 1;
   }
 
-  /* Notifications */
-  .layout-single-column .navigation-panel .column-link:nth-child(3) {
-    order: 4;
-  }
-
-  /* Explore */
-  .layout-single-column .navigation-panel .column-link:nth-child(4) {
-    order: 5;
-  }
-
-  .layout-single-column .navigation-panel .column-link:nth-child(5) {
+  .layout-single-column .navigation-panel .column-link[href="/notifications"] {
     order: 2;
   }
 
-  .layout-single-column .navigation-panel .column-link:nth-child(6) {
+  .layout-single-column .navigation-panel .column-link[href="/public/local"] {
     order: 3;
   }
 
-  .layout-single-column .navigation-panel .column-link:nth-child(7) {
+  .layout-single-column .navigation-panel .column-link[href="/explore"] {
+    order: 4;
+  }
+
+  .layout-single-column .navigation-panel .column-link[href='/follow_requests'] {
+    order: 5;
+  }
+
+  .layout-single-column .navigation-panel .column-link[href="/conversations"] {
     order: 6;
   }
 
-  .layout-single-column .navigation-panel .column-link:nth-child(8) {
-    order: 8;
-  }
-
-  /* Lists */
-  .layout-single-column .column-link[href="/lists"] {
+  .layout-single-column .navigation-panel .column-link[href="/lists"] {
     order: 7;
   }
 
-  .layout-single-column .navigation-panel .column-link:nth-child(11) {
-    order: 11;
+  .layout-single-column .navigation-panel .column-link[href="/bookmarks"] {
+    order: 8;
   }
 
-  .layout-single-column .navigation-panel .column-link:nth-child(12) {
-    order: 12;
+  .layout-single-column .navigation-panel .column-link[href="/favourites"] {
+    order: 9;
+  }
+
+  .layout-single-column .navigation-panel .column-link[href="/settings/preferences"] {
+    order: 10;
   }
 
   /* Fix "About" page's server thumbnail margins */
