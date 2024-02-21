@@ -11,7 +11,7 @@ Read the blog post: [The day I decided to build my own "Twitter"](https://rolle.
 
 ## [Live demo on mementomori.social](https://mementomori.social)
 
-![mbui (3)](https://github.com/ronilaukkarinen/mastodon-bird-ui/assets/1534150/144cca29-2fcf-4d94-8a83-b3526dbdd420)
+![mbui-2023-10-31](https://github.com/ronilaukkarinen/mastodon-bird-ui/assets/1534150/87f99e72-8417-4c7f-b0c1-7430e3c0fd31)
 
 ## Table of contents
 
@@ -23,11 +23,10 @@ Read the blog post: [The day I decided to build my own "Twitter"](https://rolle.
 6. [Installation for regular users, contributing and testing](#installation-for-regular-users-contributing-and-testing)
 7. [Updating instructions](#updating-instructions)
 8. [Other tweaks and customizations](#other-tweaks-and-customizations)
-    1. [Twitter-like link previews](#twitter-like-link-previews)
-    2. [Status bar color on Android PWA](#status-bar-color-on-android-pwa)
-    3. [Hide translate link for multiple languages](#hide-translate-link-for-multiple-languages)
-    4. [Thread lines](#thread-lines)
-    5. [Micro-interactions](#micro-interactions)
+    1. [Status bar color on Android PWA](#status-bar-color-on-android-pwa)
+    2. [Hide translate link for multiple languages](#hide-translate-link-for-multiple-languages)
+    3. [Thread lines](#thread-lines)
+    4. [Micro-interactions](#micro-interactions)
 9. [FAQ](#faq)
     1. [I want to make changes to the UI, can I do that?](#i-want-to-make-changes-to-the-ui-can-i-do-that)
     2. [Can you implement feature X?](#can-you-implement-feature-x)
@@ -41,6 +40,7 @@ Read the blog post: [The day I decided to build my own "Twitter"](https://rolle.
     11. [Can you make it look like this by default?](#can-you-make-it-look-like-this-by-default)
     12. [How to get to settings or faves on mobile?](#how-to-get-to-settings-or-faves-on-mobile)
     13. [Automatic dark/light mode possible?](#automatic-darklight-mode-possible)
+    14. [I like it so much, why it can't be the default Mastodon UI](#i-like-it-so-much-why-it-cant-be-the-default-mastodon-ui)
 10. [Goals](#goals)
 11. [Accessibility](#accessibility)
     1. [ How to install an Accessible version built for people with serious vision impairment](#how-to-install-an-accessible-version-built-for-people-with-serious-vision-impairment)
@@ -138,6 +138,9 @@ The following instances have enabled Mastodon Bird UI for their users, based on 
 | [duk.space](https://duk.space/explore)                                   | Site theme                | Bird UI          | 80+            | No          |
 | [supebase.com](https://supebase.com)                                     | Site theme                | Bird UI Modified | 1              | Yes         |
 | [buddyverse.xyz](https://buddyverse.xyz)                                 | Site theme                | Mastodon Bird UI | 6+             | Yes         |
+| [mastodon.bsd.cafe](https://mastodon.bsd.cafe/)                          | Site theme                | Mastodon Bird UI | 70+            | Yes         |
+| [jkpg.rocks](https://jkpg.rocks/)                                        | Site theme                | Mastodon Bird UI | 2+             | Yes         |
+| [convo.casa](https://convo.casa)                                         | Site theme                | Mastodon Bird UI | 5000+          | No          |
 
 ## Installation for Mastodon instance admins
 
@@ -158,7 +161,6 @@ If you'd like a different branding for your instance like "Elephant" without any
 If you cd to your Mastodon directory (usually $HOME/live) you can run these bash commands (**Please note:** These add Mastodon Bird UI as name "Mastodon Bird UI (Dark)" + variants as default, while retaining the original themes as secondary themes):
 
 ```bash
-# First, define version, "main" for nightly or "stable" for stable
 export MASTODON_VERSION_FOR_BIRD_UI="main"
 
 # Create a new folder for the theme
@@ -245,7 +247,6 @@ And you're done!
 If you are using **Custom CSS**, just copy and paste the new version to **Custom CSS** textarea in the Appearance settings in your instance (https://_yourinstance_/admin/settings/appearance). If you are using Mastodon Bird UI as option, get the latest changes to your instance, first cding to live folder (or to wherever your Mastodon root is), then:
 
 ```bash
-# First, define version, "main" for nightly or "stable" for stable
 export MASTODON_VERSION_FOR_BIRD_UI="main"
 
 # Download the CSS file for single column layout
@@ -280,13 +281,6 @@ That's it!
 
 While Mastodon Bird UI works perfectly fine out of the box, there are some things you might want to modify to make it look even better.
 
-### Twitter-like link previews
-
-If you like bigger link previews, you can implement one of these:
-
-- [4.1.2-4.1.4 stable](https://github.com/mastodon/mastodon/commit/2fff05710b95c9fe5275a2b022b3348753e55050).
-- [4.1.4 nightly](https://github.com/mastodon/mastodon/commit/e97868ac3d6a72af8cb3c39d9e7fef6892c164f4)
-
 ### Status bar color on Android PWA
 
 Edit [this line](https://github.com/mastodon/mastodon/blob/f4f3e2b46e619fcc2eda48c2eb66c517b4f466aa/app/views/layouts/application.html.haml#L24) and recompile assets with `yarn build:production`.
@@ -305,12 +299,6 @@ If you're a polyglot like me, you can hide the translate link on other languages
 ### Thread lines
 
 There is support for threads available for the nightly version since ([see PR #24549](https://github.com/mastodon/mastodon/pull/24549)) and if you want to use the native threaded lines, just use main branch from Mastodon. There's a related [issue](https://github.com/mastodon/mastodon/issues/19570#issuecomment-1493057424) about it that I have commented. You should also see the discussion on a Mastodon Bird UI issue [#4](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/4#issuecomment-1493274306).
-
-If you are using 4.1.2, 4.1.3 or 4.1.4 **stable** tag version, you can implement threads with these steps:
-
-1. Implement [this](https://github.com/mastodon/mastodon/compare/main...ronilaukkarinen:mastodon:feat-thread-lines). Tested and online at [mementomori.social](https://mementomori.social). This changes the HTML structure so that creating threaded lines is possible.
-2. Rebuild assets
-3. Enable Mastodon Bird UI 1.3.8 or later
 
 ### Micro-interactions
 
@@ -412,13 +400,22 @@ You can swipe the bottom bar. I know this is not the most obvious feature.
 
 See issues [Many users don't recognize that the bottom menu is scrollable #26](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/26) and [Swiping bottom bar triggers multi-tasking on some phones #33](https://github.com/ronilaukkarinen/mastodon-bird-ui/issues/33).
 
-# Automatic dark/light mode possible?
+### Automatic dark/light mode possible?
 
 Not at the moment, for following reasons:
 
 1. Original Mastodon themes were built using CSS classes in body level, Mastodon Bird UI merely follows this logic.
 2. `@media (prefers-color-scheme: dark/light)` does not support `@import` in SCSS inside them, so it's not currently possible to implement new themes with one file. I'm not going to create separate files for dark and light themes, because it would be too much work to maintain.
 3. Many choose to use either dark or light theme.
+
+### I like it so much, why it can't be the default Mastodon UI?
+
+As I have explained [here](https://mementomori.social/@rolle/110775398758308450) and in other threads, I do not want it to be the default UI. There are numerous reasons for this.
+
+1. I would not be responsible for it. I do this as a side hobby and for fun, it would get too professional and time consuming for me to be responsible "alone" for the UI infrastructure of the official Mastodon core. It would need some arrangement so it would not bring extra pressure to me personally. More maintainers, etc. I have a time consuming day job as an entrepreneur and UI in this scale needs more housekeeping than I can provide.
+2. The Mastodon core CSS/SCSS needs to be rewritten. It's not practical to have two code bases, I think Mastodon Bird UI cannot be just "added" to the core, it's CSS-only and does not follow the current Mastodon SCSS framework. At very least the SCSS variables should be replaced with CSS variables. It's quite a lot of work to rewrite a complete UI codebase.
+3. Hacky micro animations and SVG-CSS icons should be replaced with real things. Right now it's like a stamp on a letter. We need the new letter for this to be official.
+4. The idea and looks behind Mastodon Bird UI is hugely inspired by Twitter UI. If the popular attitude is that Mastodon should not resemble Twitter in any way, that needs to change first.
 
 ## Goals
 
@@ -600,6 +597,17 @@ body.theme-mastodon-bird-ui-accessible {
 .notification__filter-bar a.active,
 .notification__filter-bar button.active {
   background-color: var(--color-mud) !important;
+}
+
+/* More visible button borders */
+.account .account__relationship > .button,
+.account__header__tabs__buttons .button,
+.account__header__tabs__buttons .icon-button,
+.column-inline-form button,
+.explore__suggestions .account-card__actions__button button,
+.notification .account__relationship > .button,
+.notification__report__actions .button {
+  border-color: var(--color-light-text) !important;
 }
 ```
 

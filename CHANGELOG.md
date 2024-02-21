@@ -1,3 +1,38 @@
+### 1.8.5: 2024-02-10
+
+* Add profile link icons for Facebook and Bandcamp (from 2.0.0rc/nightly)
+* Add WordPress profile icon (from 2.0.0rc13/nightly)
+* Add Friendica profile icon #101 (thanks @expertmanofficial!) (from 2.0.0rc13/nightly)
+* Add an icon for genderless pronouns #101 (from 2.0.0rc13/nightly)
+
+### 1.8.4: 2024-02-09
+
+* Update bluesky icon #106 (thanks @dhelonious!)
+* Fix Carriage Return after a custom emoji in the bio's Extra fields #104 (thanks @manuviens!)
+
+### 1.8.3: 2023-11-12
+
+* Add profile link icons for Nostr, Bluesky and Threads
+* Truncate too long links in the profile, like Nostr
+
+### 1.8.2: 2023-10-29
+
+* Remove deprecated Local icon
+* Remove deprecated Share icon
+* Add an icon for Preferences
+
+### 1.8.1: 2023-10-29
+
+* Hotfix for regression with the home icon
+
+### 1.8.0: 2023-10-29
+
+* Improve button border colors in ultra accessible theme
+* Do not animate when prefers-reduced-motion is set to reduce, Fixes #95
+* Fix profile button icon not horizontally centered
+* Fix regression with icon button aligning when not focused
+* Fix regression with wrong alignment of the bell icon when activated
+
 ### 1.7.9: 2023-10-04
 
 * Improve the visibility of column header borders in advanced view
@@ -8,6 +43,7 @@
 * Fix collapsible border in tab header
 * Make it easier to edit the gap of column-links by splitting the variables in two #86 (thanks @trankten!)
 * Add dark banner styles for account-memorial-banner (thanks @DismalShadowX!), follow-request-banner and moved-account-banners, Closes #94
+* Fix column back button border
 
 ### 1.7.8: 2023-09-24
 
